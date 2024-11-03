@@ -18,7 +18,7 @@ function App() {
     <>
       <Header />           {/* Header component */}
       <MainContent />      {/* MainContent component */}.
-      <UserProfile name="Joe" age="29" bio="Loves hiking and photography"/>
+      <UserProfile name="Alice" age="25" bio="Loves hiking and photography"/>
       <Footer />           {/* Footer component */}
       <div>
 
