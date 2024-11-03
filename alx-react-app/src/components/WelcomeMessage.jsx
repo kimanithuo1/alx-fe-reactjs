@@ -1,5 +1,3 @@
-
-
 function WelcomeMessage() {
     return (
         <div>
