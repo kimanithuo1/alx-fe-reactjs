@@ -8,7 +8,7 @@ import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import WelcomeMessage from './components/WelcomeMessage';
-
+import UserProfile from './components/UserProfile';
 
 
 function App() {
@@ -17,7 +17,8 @@ function App() {
   return (
     <>
       <Header />           {/* Header component */}
-      <MainContent />      {/* MainContent component */}
+      <MainContent />      {/* MainContent component */}.
+      <UserProfile name="Joe" age="29" bio="Loves hiking and photography"/>
       <Footer />           {/* Footer component */}
       <div>
 
