@@ -1,4 +1,4 @@
-// src/App.js
+// src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
@@ -18,7 +18,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      <Footer /> {/* Footer at the bottom */}
+      <Footer />
     </Router>
   );
 }
