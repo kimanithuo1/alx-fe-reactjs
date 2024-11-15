@@ -8,7 +8,7 @@ const RecipeDetails = () => {
 
   // Retrieve recipe from Zustand store
   const recipe = useRecipeStore(state =>
-    state.recipes.find(r => r.id === recipeId)
+    state.recipes.find(r => recipe.id === recipeId)
   );
 
   const updateRecipe = useRecipeStore(state => state.updateRecipe);
