@@ -1,7 +1,7 @@
 // src/components/recipeStore.js
-import create from 'zustand';
+import { create } from 'zustand';
 
-const useRecipeStore = create(set => ({
+export const useRecipeStore = create(set => ({
   recipes: [],
   favorites: [],
   searchTerm: '',
@@ -49,5 +49,7 @@ const useRecipeStore = create(set => ({
     return { recommendations: recommended };
   })
 }));
+
+
 
 export default useRecipeStore;
