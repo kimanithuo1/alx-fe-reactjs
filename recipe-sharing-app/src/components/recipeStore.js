@@ -1,13 +1,13 @@
 // src/components/recipeStore.js
-import { create } from 'zustand';
+import create from 'zustand';
 
 export const useRecipeStore = create(set => ({
   recipes: [],
   favorites: [],
   searchTerm: '',
   filteredRecipes: [],
-
-  // Add a recipe to the list
+  
+  // Add a new recipe to the list
   addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
 
   // Update a recipe in the list
@@ -17,10 +17,13 @@ export const useRecipeStore = create(set => ({
     )
   })),
 
-  // Delete a recipe
+  // Delete a recipe from the list
   deleteRecipe: (id) => set(state => ({
     recipes: state.recipes.filter(recipe => recipe.id !== id)
   })),
+
+  // Set recipes directly
+  setRecipes: (newRecipes) => set({ recipes: newRecipes }),
 
   // Add recipe to favorites
   addFavorite: (recipeId) => set(state => ({ favorites: [...state.favorites, recipeId] })),
@@ -49,6 +52,7 @@ export const useRecipeStore = create(set => ({
     return { recommendations: recommended };
   })
 }));
+
 
 
 
