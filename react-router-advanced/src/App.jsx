@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import ProfileDetails from "./components/ProfileDetails";
 import ProfileSettings from "./components/ProfileSettings";
-import Post from "./components/Post"; // Import Post component
+import BlogPost from "./components/BlogPost"; // Rename Post to BlogPost
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
             <Route path="settings" element={<ProfileSettings />} />
           </Route>
           {/* Dynamic Route for Blog Post */}
-          <Route path="/blog/:id" element={<Post />} />
+          <Route path="/blog/:id" element={<BlogPost />} /> {/* Use BlogPost */}
         </Routes>
       </div>
     </BrowserRouter>
