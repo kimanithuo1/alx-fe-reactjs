@@ -4,27 +4,34 @@ function RegistrationForm() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [errors, setErrors] = useState({}); // Using an object to store multiple error messages
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Basic validation
-    if (!username || !email || !password) {
-      setError('All fields are required.');
-      return;
+    
+    // Reset errors
+    const newErrors = {};
+
+    // Basic validation logic
+    if (!username) newErrors.username = 'Username is required';
+    if (!email) newErrors.email = 'Email is required';
+    if (!password) newErrors.password = 'Password is required';
+
+    setErrors(newErrors);
+
+    // If there are no errors, proceed with form submission
+    if (Object.keys(newErrors).length === 0) {
+      console.log('Submitted:', { username, email, password });
+      // Clear the form
+      setUsername('');
+      setEmail('');
+      setPassword('');
     }
-    setError('');
-    console.log('Submitted:', { username, email, password });
-    // Clear fields after submission
-    setUsername('');
-    setEmail('');
-    setPassword('');
   };
 
   return (
     <div>
       <h2>Register</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>
@@ -33,6 +40,7 @@ function RegistrationForm() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
+          {errors.username && <p style={{ color: 'red' }}>{errors.username}</p>}
         </div>
         <div>
           <label>Email:</label>
@@ -41,6 +49,7 @@ function RegistrationForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
         </div>
         <div>
           <label>Password:</label>
@@ -49,6 +58,7 @@ function RegistrationForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
         </div>
         <button type="submit">Register</button>
       </form>
