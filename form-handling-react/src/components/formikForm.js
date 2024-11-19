@@ -9,36 +9,43 @@ const validationSchema = Yup.object({
 });
 
 function FormikForm() {
-  return (
-    <Formik
-      initialValues={{ username: '', email: '', password: '' }}
-      validationSchema={validationSchema}
-      onSubmit={(values, { resetForm }) => {
+  return React.createElement(
+    Formik,
+    {
+      initialValues: { username: '', email: '', password: '' },
+      validationSchema: validationSchema,
+      onSubmit: (values, { resetForm }) => {
         console.log('Submitted:', values);
         resetForm();
-      }}
-    >
-      {({ errors, touched }) => (
-        <Form>
-          <div>
-            <label>Username:</label>
-            <Field name="username" type="text" />
-            <ErrorMessage name="username" component="div" style={{ color: 'red' }} />
-          </div>
-          <div>
-            <label>Email:</label>
-            <Field name="email" type="email" />
-            <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
-          </div>
-          <div>
-            <label>Password:</label>
-            <Field name="password" type="password" />
-            <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
-          </div>
-          <button type="submit">Register</button>
-        </Form>
-      )}
-    </Formik>
+      }
+    },
+    ({ errors, touched }) =>
+      React.createElement(
+        Form,
+        null,
+        React.createElement(
+          'div',
+          null,
+          React.createElement('label', null, 'Username:'),
+          React.createElement(Field, { name: 'username', type: 'text' }),
+          React.createElement(ErrorMessage, { name: 'username', component: 'div', style: { color: 'red' } })
+        ),
+        React.createElement(
+          'div',
+          null,
+          React.createElement('label', null, 'Email:'),
+          React.createElement(Field, { name: 'email', type: 'email' }),
+          React.createElement(ErrorMessage, { name: 'email', component: 'div', style: { color: 'red' } })
+        ),
+        React.createElement(
+          'div',
+          null,
+          React.createElement('label', null, 'Password:'),
+          React.createElement(Field, { name: 'password', type: 'password' }),
+          React.createElement(ErrorMessage, { name: 'password', component: 'div', style: { color: 'red' } })
+        ),
+        React.createElement('button', { type: 'submit' }, 'Register')
+      )
   );
 }
 
