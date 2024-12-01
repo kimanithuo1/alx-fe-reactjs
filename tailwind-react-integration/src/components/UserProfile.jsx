@@ -6,12 +6,12 @@ function UserProfile() {
       <img
         src="https://images.pexels.com/photos/1615776/pexels-photo-1615776.jpeg?auto=compress&cs=tinysrgb&w=400/150"
         alt="User"
-        className="rounded-full w-24 h-24 sm:w-36 sm:h-36 mx-auto"
+        className="rounded-full sm:w-24 sm:h-24 md:w-36 md:h-36 mx-auto"
       />
-      <h1 className="text-lg sm:text-xl text-blue-800 my-4 text-center">
+      <h1 className="text-lg sm:text-xl md:text-xl text-blue-800 my-4 text-center">
         John Doe
       </h1>
-      <p className="text-sm sm:text-base text-gray-600 text-center">
+      <p className="text-sm sm:text-sm md:text-base  text-gray-600 text-center">
         Developer at Example Co. Loves to write code and explore new technologies.
       </p>
       <p className="text-sm sm:text-base text-gray-600 text-center mt-2">
