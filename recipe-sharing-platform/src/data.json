@@ -3,19 +3,43 @@
       "id": 1,
       "title": "Spaghetti Carbonara",
       "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-      "image": "https://via.placeholder.com/150"
+      "image": "https://via.placeholder.com/150",
+      "ingredients": ["200g spaghetti", "2 large eggs", "100g pancetta", "50g grated Parmesan", "Black pepper"],
+      "instructions": [
+        "Boil the spaghetti in salted water until al dente.",
+        "Fry the pancetta in a pan until crispy.",
+        "Whisk the eggs with grated Parmesan and black pepper.",
+        "Combine the hot spaghetti with the pancetta and egg mixture.",
+        "Serve immediately with extra Parmesan."
+      ]
     },
     {
       "id": 2,
       "title": "Chicken Tikka Masala",
       "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
-      "image": "https://via.placeholder.com/150"
+      "image": "https://via.placeholder.com/150",
+      "ingredients": ["500g chicken breast", "200ml yogurt", "2 tbsp garam masala", "1 onion", "400g canned tomatoes"],
+      "instructions": [
+        "Marinate chicken with yogurt and garam masala for 2 hours.",
+        "Grill the chicken until slightly charred.",
+        "Saute onions and spices in a pan until fragrant.",
+        "Add canned tomatoes and cook until thickened.",
+        "Stir in grilled chicken and simmer for 10 minutes."
+      ]
     },
     {
       "id": 3,
-      "title": "Beef Stroganoff",
-      "summary": "Tender beef slices in a creamy mushroom sauce served over noodles.",
-      "image": "https://via.placeholder.com/150"
+      "title": "Vegetarian Buddha Bowl",
+      "summary": "A wholesome and nutritious bowl with quinoa, roasted vegetables, and a tangy tahini dressing.",
+      "image": "https://via.placeholder.com/150",
+      "ingredients": ["1 cup quinoa", "1 sweet potato", "1 cup broccoli florets", "1 avocado", "2 tbsp tahini"],
+      "instructions": [
+        "Cook the quinoa according to package instructions.",
+        "Roast sweet potato and broccoli in the oven until tender.",
+        "Slice the avocado and prepare other toppings as needed.",
+        "Assemble the bowl with quinoa, roasted veggies, and avocado.",
+        "Drizzle tahini dressing over the top and serve."
+      ]
     }
   ]
   
