@@ -12,7 +12,7 @@ const AddRecipeForm = () => {
 
   // Handle input change
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = target.value;
     setFormValues({
       ...formValues,
       [name]: value,
