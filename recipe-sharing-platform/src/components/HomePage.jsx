@@ -35,10 +35,18 @@ const HomePage = () => {
               >
                 View Recipe
               </Link>
+
             </div>
+
           </div>
         ))}
       </div>
+      <Link
+                to="/add-recipe"
+               className="block text-center text-blue-500 hover:underline mb-8"
+                >
+                 Add a New Recipe
+              </Link>
     </div>
   );
 };
