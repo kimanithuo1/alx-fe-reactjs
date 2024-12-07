@@ -40,7 +40,7 @@ const HomePage = () => {
 
           </div>
         ))}
-      </div>
+      </div> <br/><br/>
       <Link
                 to="/add-recipe"
                className="block text-center text-blue-500 hover:underline mb-8"
