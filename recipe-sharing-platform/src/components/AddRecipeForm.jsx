@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const AddRecipeForm = () => {
-  // State for form inputs
   const [formValues, setFormValues] = useState({
     title: "",
     ingredients: "",
@@ -9,43 +8,39 @@ const AddRecipeForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-
-  // Validation function
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formValues.title) newErrors.title = "Recipe title is required.";
-    if (!formValues.ingredients) {
-      newErrors.ingredients = "Ingredients are required.";
-    } else if (formValues.ingredients.split("\n").length < 2) {
-      newErrors.ingredients = "Please list at least two ingredients.";
-    }
-    if (!formValues.steps) newErrors.steps = "Preparation steps are required.";
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Handle input change
-  const handleInputChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormValues((prevValues) => ({
-      ...prevValues,
+    setFormValues({
+      ...formValues,
       [name]: value,
-    }));
+    });
+  };
+
+  // Validate the form
+  const validateForm = () => {
+    const errors = {};
+    if (!formValues.title.trim()) errors.title = "Recipe title is required";
+    if (!formValues.ingredients.trim()) errors.ingredients = "Ingredients are required";
+    if (!formValues.steps.trim()) errors.steps = "Preparation steps are required";
+    return errors;
   };
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForm()) {
+    const validationErrors = validateForm();
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
       console.log("Form submitted successfully:", formValues);
-      alert("Recipe submitted successfully!");
+      setIsSubmitted(true);
       // Reset form
-      setFormValues({
-        title: "",
-        ingredients: "",
-        steps: "",
-      });
-      setErrors({});
+      setFormValues({ title: "", ingredients: "", steps: "" });
+    } else {
+      setIsSubmitted(false);
     }
   };
 
@@ -54,12 +49,9 @@ const AddRecipeForm = () => {
       <h1 className="text-3xl font-bold text-center mb-8">Add New Recipe</h1>
       <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Recipe Title */}
+          {/* Recipe Title Field */}
           <div>
-            <label
-              htmlFor="title"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="title" className="block text-sm font-medium text-gray-700">
               Recipe Title
             </label>
             <input
@@ -67,28 +59,23 @@ const AddRecipeForm = () => {
               id="title"
               name="title"
               value={formValues.title}
-              onChange={handleInputChange}
+              onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter the recipe title"
             />
-            {errors.title && (
-              <p className="text-red-500 text-sm mt-1">{errors.title}</p>
-            )}
+            {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
           </div>
 
-          {/* Ingredients */}
+          {/* Ingredients Field */}
           <div>
-            <label
-              htmlFor="ingredients"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="ingredients" className="block text-sm font-medium text-gray-700">
               Ingredients
             </label>
             <textarea
               id="ingredients"
               name="ingredients"
               value={formValues.ingredients}
-              onChange={handleInputChange}
+              onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter each ingredient on a new line"
               rows="5"
@@ -98,26 +85,21 @@ const AddRecipeForm = () => {
             )}
           </div>
 
-          {/* Preparation Steps */}
+          {/* Preparation Steps Field */}
           <div>
-            <label
-              htmlFor="steps"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="steps" className="block text-sm font-medium text-gray-700">
               Preparation Steps
             </label>
             <textarea
               id="steps"
               name="steps"
               value={formValues.steps}
-              onChange={handleInputChange}
+              onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter each step on a new line"
               rows="5"
             />
-            {errors.steps && (
-              <p className="text-red-500 text-sm mt-1">{errors.steps}</p>
-            )}
+            {errors.steps && <p className="text-red-500 text-sm mt-1">{errors.steps}</p>}
           </div>
 
           {/* Submit Button */}
@@ -129,6 +111,10 @@ const AddRecipeForm = () => {
               Submit Recipe
             </button>
           </div>
+          {/* Success Message */}
+          {isSubmitted && (
+            <p className="text-green-500 text-center mt-4">Recipe submitted successfully!</p>
+          )}
         </form>
       </div>
     </div>
