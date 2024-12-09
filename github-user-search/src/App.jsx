@@ -5,7 +5,7 @@ const App = () => {
     return (
         <div>
             <header>
-                <h1>GitHub User Search</h1>
+
             </header>
             <main>
                 <Search />
