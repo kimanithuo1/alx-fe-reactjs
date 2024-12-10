@@ -10,7 +10,7 @@ const Search = () => {
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1);
 
-    const handleSearch = async (e) => {
+    const fetchUserData = async (e) => {
         e.preventDefault();
         setLoading(true);
         setError(null);
@@ -59,7 +59,7 @@ const Search = () => {
                     GitHub User Search
                 </h1>
                 <form
-                    onSubmit={handleSearch}
+                    onSubmit={fetchUserData}
                     className="space-y-4"
                 >
                     <div className="flex flex-col">
