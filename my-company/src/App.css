@@ -1,23 +1,29 @@
+/* Centering the main container and setting a max width */
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  box-sizing: border-box;
 }
 
+/* Logo Styling */
 .logo {
   height: 6em;
   padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  will-change: filter, transform;
+  transition: filter 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #4a90e2aa);
+  transform: scale(1.05);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Spinning animation for React logo */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -27,16 +33,47 @@
   }
 }
 
+/* Trigger animation only when reduced motion is off */
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
+  .logo.react {
     animation: logo-spin infinite 20s linear;
   }
 }
 
+/* Card Component Styling */
 .card {
   padding: 2em;
+  margin: 1em auto;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  max-width: 600px;
+  color: #f5f5f5;
+  text-align: left;
+}
+.card:hover {
+  transform: translateY(-8px);
 }
 
+/* Documentation Link Styling */
 .read-the-docs {
   color: #888;
+  font-size: 0.9em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.read-the-docs:hover {
+  color: #4a90e2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo {
+    height: 4em;
+  }
+  .card {
+    padding: 1.5em;
+    margin: 1em;
+  }
 }

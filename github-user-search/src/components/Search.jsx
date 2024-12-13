@@ -53,20 +53,14 @@ const Search = () => {
     };
 
     return (
-        <div className="min-h-screen bg-blue-50 flex items-center justify-center">
-            <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
-                <h1 className="text-2xl font-bold text-center text-blue-700 mb-6">
-                    GitHub User Search
-                </h1>
-                <form
-                    onSubmit={fetchUserData}
-                    className="space-y-4"
-                >
+        <div className="min-h-screen bg-[#B7BDC8] text-[#285D66] px-4">
+            <header className="flex justify-between items-center p-4 bg-[#6DA095] text-[#E1DF66]">
+                <h1 className="text-2xl font-bold">GitHub User Search</h1>
+            </header>
+            <main className="max-w-4xl mx-auto mt-8">
+                <form onSubmit={fetchUserData} className="space-y-4 bg-white p-6 rounded-lg shadow-lg">
                     <div className="flex flex-col">
-                        <label
-                            htmlFor="username"
-                            className="text-gray-700 font-medium"
-                        >
+                        <label htmlFor="username" className="text-[#285D66] font-medium">
                             GitHub Username:
                         </label>
                         <input
@@ -75,14 +69,11 @@ const Search = () => {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             placeholder="Enter GitHub username"
-                            className="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                            className="mt-1 p-2 border border-gray-300 rounded-md focus:ring-[#6DA095] focus:border-[#6DA095]"
                         />
                     </div>
                     <div className="flex flex-col">
-                        <label
-                            htmlFor="location"
-                            className="text-gray-700 font-medium"
-                        >
+                        <label htmlFor="location" className="text-[#285D66] font-medium">
                             Location:
                         </label>
                         <input
@@ -91,14 +82,11 @@ const Search = () => {
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
                             placeholder="Enter location"
-                            className="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                            className="mt-1 p-2 border border-gray-300 rounded-md focus:ring-[#6DA095] focus:border-[#6DA095]"
                         />
                     </div>
                     <div className="flex flex-col">
-                        <label
-                            htmlFor="minRepos"
-                            className="text-gray-700 font-medium"
-                        >
+                        <label htmlFor="minRepos" className="text-[#285D66] font-medium">
                             Minimum Repositories:
                         </label>
                         <input
@@ -107,33 +95,26 @@ const Search = () => {
                             value={minRepos}
                             onChange={(e) => setMinRepos(e.target.value)}
                             placeholder="Enter minimum repo count"
-                            className="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                            className="mt-1 p-2 border border-gray-300 rounded-md focus:ring-[#6DA095] focus:border-[#6DA095]"
                         />
                     </div>
                     <button
                         type="submit"
-                        className="block w-full bg-blue-500 text-white py-2 rounded-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+                        className="w-full bg-[#285D66] text-white py-2 rounded-md hover:bg-[#6DA095] focus:outline-none focus:ring-2 focus:ring-[#6DA095] focus:ring-offset-2 transition-colors"
                     >
                         Search
                     </button>
                 </form>
 
-                {loading && (
-                    <p className="text-center mt-4 text-blue-600">
-                        Loading...
-                    </p>
-                )}
-                {error && (
-                    <p className="text-center mt-4 text-red-600">
-                        {error}
-                    </p>
-                )}
+                {loading && <p className="text-center mt-4 text-[#285D66]">Loading...</p>}
+                {error && <p className="text-center mt-4 text-red-600">{error}</p>}
+
                 {results.length > 0 && (
-                    <ul className="mt-6 space-y-4">
+                    <div className="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                         {results.map((user) => (
-                            <li
+                            <div
                                 key={user.id}
-                                className="flex items-center space-x-4 bg-gray-100 p-4 rounded-lg shadow-sm"
+                                className="bg-white p-4 rounded-lg shadow-md flex items-center space-x-4"
                             >
                                 <img
                                     src={user.avatar_url}
@@ -141,38 +122,41 @@ const Search = () => {
                                     className="w-16 h-16 rounded-full"
                                 />
                                 <div>
-                                    <h3 className="text-lg font-bold text-gray-800">
+                                    <h3 className="text-lg font-bold text-[#285D66]">
                                         {user.login}
                                     </h3>
-                                    <p className="text-gray-600">
+                                    <p className="text-[#6DA095]">
                                         Location: {user.location || 'Not specified'}
                                     </p>
-                                    <p className="text-gray-600">
+                                    <p className="text-[#6DA095]">
                                         Repositories: {user.public_repos || 'Unknown'}
                                     </p>
                                     <a
                                         href={user.html_url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-blue-500 hover:underline"
+                                        className="text-[#E1DF66] hover:underline"
                                     >
                                         View Profile
                                     </a>
                                 </div>
-                            </li>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                 )}
 
                 {results.length > 0 && (
                     <button
                         onClick={fetchNextPage}
-                        className="block w-full mt-4 bg-blue-500 text-white py-2 rounded-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+                        className="w-full mt-4 bg-[#285D66] text-white py-2 rounded-md hover:bg-[#6DA095] focus:outline-none focus:ring-2 focus:ring-[#6DA095] focus:ring-offset-2 transition-colors"
                     >
                         Load More
                     </button>
                 )}
-            </div>
+            </main>
+            <footer className="text-center py-4 bg-[#285D66] text-white">
+                &copy; 2024 GitHub User Search
+            </footer>
         </div>
     );
 };
